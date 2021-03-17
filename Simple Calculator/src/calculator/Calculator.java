@@ -21,6 +21,7 @@ public class Calculator {
     private JLabel lblAnswer;
     private JTextField textField_answer;
     private JButton btnAdd,btnSubtract,btnMultiplication,btnDivision;
+    private int no1,no2,ans;
 	/**
 	 * Launch the application.
 	 */
@@ -69,7 +70,6 @@ public class Calculator {
 		btnAdd.setBackground(SystemColor.activeCaption);
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int no1,no2,ans;
 				
 				try {
 					no1 = Integer.parseInt(textField_num1.getText());
@@ -91,8 +91,7 @@ public class Calculator {
 		btnSubtract.setBackground(SystemColor.activeCaption);
 		btnSubtract.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int no1,no2,ans;
-				
+
 				try {
 					no1 = Integer.parseInt(textField_num1.getText());
 					no2 = Integer.parseInt(textField_num2.getText());
@@ -129,12 +128,38 @@ public class Calculator {
 		btnMultiplication.setBackground(SystemColor.activeCaption);
 		btnMultiplication.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					no1 = Integer.parseInt(textField_num1.getText());
+					no2 = Integer.parseInt(textField_num2.getText());
+					
+					ans = no1 * no2;
+					
+					textField_answer.setText(Integer.toString(ans));
+					
+				}catch(Exception a) {
+					JOptionPane.showMessageDialog(null, "Enter Valid Number!");
+				}
 			}
 		});
 		btnMultiplication.setBounds(189, 143, 46, 31);
 		frmCalculator.getContentPane().add(btnMultiplication);
 		
 		btnDivision = new JButton("/");
+		btnDivision.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					no1 = Integer.parseInt(textField_num1.getText());
+					no2 = Integer.parseInt(textField_num2.getText());
+					
+					ans = no1 / no2;
+					
+					textField_answer.setText(Integer.toString(ans));
+					
+				}catch(Exception a) {
+					JOptionPane.showMessageDialog(null, "Enter Valid Number!");
+				}
+			}
+		});
 		btnDivision.setBackground(SystemColor.activeCaption);
 		btnDivision.setBounds(262, 143, 46, 31);
 		frmCalculator.getContentPane().add(btnDivision);

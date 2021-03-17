@@ -22,6 +22,7 @@ public class Calculator {
     private JTextField textField_answer;
     private JButton btnAdd,btnSubtract,btnMultiplication,btnDivision;
     private double no1,no2,ans;
+    
 	/**
 	 * Launch the application.
 	 */
@@ -71,24 +72,19 @@ public class Calculator {
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(textField_num1.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Enter a value for number 1!");
-				}else if(textField_num2.getText().isEmpty()){
-					JOptionPane.showMessageDialog(null, "Enter a value for number 2!");
-				}else {
-					try {
-						no1 = Double.parseDouble(textField_num1.getText());
-						no2 = Double.parseDouble(textField_num2.getText());
-						
-						ans = no1 + no2;
-						
-						textField_answer.setText(Double.toString(ans));
-						
-					}catch(Exception a) {
-						JOptionPane.showMessageDialog(null, "Enter Valid Number!");
-					}
+
+				try {
+					checkFields();
+					no1 = Double.parseDouble(textField_num1.getText());
+					no2 = Double.parseDouble(textField_num2.getText());
+					
+					ans = no1 + no2;
+					
+					textField_answer.setText(Double.toString(ans));
+					
+				}catch(Exception a) {
+					JOptionPane.showMessageDialog(null, "Enter Valid Number!");
 				}
-				
 			}
 		});
 		btnAdd.setBounds(39, 143, 46, 31);
@@ -98,25 +94,20 @@ public class Calculator {
 		btnSubtract.setBackground(SystemColor.activeCaption);
 		btnSubtract.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				if(textField_num1.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Enter a value for number 1!");
-				}else if(textField_num2.getText().isEmpty()){
-					JOptionPane.showMessageDialog(null, "Enter a value for number 2!");
-				}else {
-					try {
-						no1 = Double.parseDouble(textField_num1.getText());
-						no2 = Double.parseDouble(textField_num2.getText());
-						
-						ans = no1 - no2;
-						
-						textField_answer.setText(Double.toString(ans));
-						
-					}catch(Exception a) {
-						JOptionPane.showMessageDialog(null, "Enter Valid Number!");
-					}
-				}
 
+				checkFields();
+				
+				try {
+					no1 = Double.parseDouble(textField_num1.getText());
+					no2 = Double.parseDouble(textField_num2.getText());
+					
+					ans = no1 - no2;
+					
+					textField_answer.setText(Double.toString(ans));
+					
+				}catch(Exception a) {
+					JOptionPane.showMessageDialog(null, "Enter Valid Number!");
+				}
 			}
 		});
 		btnSubtract.setBounds(112, 143, 46, 31);
@@ -142,24 +133,20 @@ public class Calculator {
 		btnMultiplication.setBackground(SystemColor.activeCaption);
 		btnMultiplication.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(textField_num1.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Enter a value for number 1!");
-				}else if(textField_num2.getText().isEmpty()){
-					JOptionPane.showMessageDialog(null, "Enter a value for number 2!");
-				}else {
-					try {
-						no1 = Double.parseDouble(textField_num1.getText());
-						no2 = Double.parseDouble(textField_num2.getText());
-						
-						ans = no1 * no2;
-						
-						textField_answer.setText(Double.toString(ans));
-						
-					}catch(Exception a) {
-						JOptionPane.showMessageDialog(null, "Enter Valid Number!");
-					}
-				}
 				
+				checkFields();
+				try {
+					no1 = Double.parseDouble(textField_num1.getText());
+					no2 = Double.parseDouble(textField_num2.getText());
+					
+					ans = no1 * no2;
+					
+					textField_answer.setText(Double.toString(ans));
+					
+				}catch(Exception a) {
+					JOptionPane.showMessageDialog(null, "Enter Valid Number!");
+				}
+							
 			}
 		});
 		btnMultiplication.setBounds(189, 143, 46, 31);
@@ -169,23 +156,19 @@ public class Calculator {
 		btnDivision.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(textField_num1.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Enter a value for number 1!");
-				}else if(textField_num2.getText().isEmpty()){
-					JOptionPane.showMessageDialog(null, "Enter a value for number 2!");
-				}else {
-					try {
-						no1 = Double.parseDouble(textField_num1.getText());
-						no2 = Double.parseDouble(textField_num2.getText());
-						
-						ans = no1 / no2;
-						
-						textField_answer.setText(Double.toString(ans));
-						
-					}catch(Exception a) {
-						JOptionPane.showMessageDialog(null, "Enter Valid Number!");
-					}
+				checkFields();
+				try {
+					no1 = Double.parseDouble(textField_num1.getText());
+					no2 = Double.parseDouble(textField_num2.getText());
+					
+					ans = no1 / no2;
+					
+					textField_answer.setText(Double.toString(ans));
+					
+				}catch(Exception a) {
+					JOptionPane.showMessageDialog(null, "Enter Valid Number!");
 				}
+				
 			}
 		});
 		btnDivision.setBackground(SystemColor.activeCaption);
@@ -197,5 +180,16 @@ public class Calculator {
 		textField_answer.setBounds(118, 209, 190, 20);
 		frmCalculator.getContentPane().add(textField_answer);
 		textField_answer.setColumns(10);
+	}
+	
+	public void checkFields() {
+		if(textField_num1.getText().isEmpty()) {
+			JOptionPane.showMessageDialog(null, "Enter a value for number 1!");
+		}else if(textField_num2.getText().isEmpty()){
+			if(textField_num1.getText().isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Enter a value for number 1!");
+			}
+			JOptionPane.showMessageDialog(null, "Enter a value for number 2!");
+		}
 	}
 }
